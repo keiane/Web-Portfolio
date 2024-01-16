@@ -45,7 +45,7 @@ def contact():
     if request.method == "POST":
         data = request.form
         msg = Message(subject=f"Portfolio message from {data['name']}", 
-                      body=f"Name: {data['name']}\nEmail: {data['email']}\nPhone: {data['phone']}\n\n{data['message']}", sender=os.environ.get('MAIL_RECIPIENT'), recipients=os.environ.get('MAIL_RECIPIENT'))
+                      body=f"Name: {data['name']}\nEmail: {data['email']}\nPhone: {data['phone']}\n\n{data['message']}", sender=os.environ.get('MAIL_USERNAME'), recipients=[os.environ.get('MAIL_RECIPIENT')])
         mail.send(msg)
         return render_template("contact.html", form=form, msg_sent=True, current_year=current_year)
     return render_template("contact.html", form=form, msg_sent=False, current_year=current_year)
