@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center min-vh-100">
+    <div>
+        <h1 class="display-1 fw-bold text-body-emphasis">
+            <span class="first-name">Keiane Balicanta</span>
+            <span class="button-badge"></span>
+
+        </h1>
+        <div>
+            <p class="display-6">Electrical and computer engineering student at Rowan University</p>
+            <p class="lead mb-4">I study technological solutions constantly growing my knowledge in engineering excellence.</p>
+            <div>
+                <a href="{{ url_for('about') }}"><button type="button" class="fw-bold btn btn-lg px-4 gap-3" style="background-color: #F4CE14;">Learn More</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
