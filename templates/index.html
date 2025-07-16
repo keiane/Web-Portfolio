@@ -1,23 +1,288 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
 
-{% block content %}
-<div class="container d-flex align-items-center justify-content-center min-vh-100">
-    <div>
-        <h1 class="display-1 fw-bold text-body-emphasis">
-            <span class="first-name">Keiane Balicanta</span>
-            <span class="button-badge"></span>
-
-        </h1>
-        <div>
-            <p class="display-6">Electrical and computer engineer</p>
-            <p class="lead mb-4">I study technological solutions constantly growing my knowledge in engineering excellence.</p>
-            <div>
-                <a href="{{ url_for('about') }}"><button type="button" class="fw-bold btn btn-lg px-4 gap-3" style="background-color: #D11C53;">Learn More</button></a>
-            </div>
+{% block main %}
+<!-- Header NAVBAR -->   
+    <header>
+        <div class="navbar">
+                <ul class="links">
+                    <li class="nav-zoom"><a href="#top"><span>Home</span></a></li>
+                    <li class="nav-zoom"><a href="#about"><span>About</span></a></li>
+                    <li class="nav-zoom"><a href="#experience"><span>Work Experience</span></a></li>
+                    <li class="nav-zoom"><a href="#projects"><span>Projects</span></a></li>
+                    <li class="nav-zoom"><a href="{{ url_for('contact') }}"><span>Contact</span></a></li>
+                </ul>
         </div>
+      </header>
+      
+<main class="main">
+    <!------------------------------- Home ------------------------------->
+  <body>
+      <div class="container d-flex justify-content-center min-vh-50">
+            <div class="my-5"> 
+              <div class="p-5 text-center bg-body-tertiary"> 
+                <div class="container py-5"> 
+                  <h1 class="text-body-emphasis">Keiane Balicanta</h1>
+                  <h4>Electrical & Computer Engineer</h4> 
+                  <hr class="dotted">
+                    <p class="col-lg-8 mx-auto lead">
+                      I study technological solutions constantly growing my knowledge in engineering excellence.  
+                    </p>
+                      
+                    <ul class="nav w-100 justify-content-center list-unstyled d-flex">
+                      <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/keiane-balicanta-7193671a2/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-linkedin" viewBox="0 0 20 20">
+                        <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                      </svg></a></li>
+                      <li class="ms-3"><a class="text-body-secondary" href="https://www.youtube.com/channel/UC9aQjgd2dpqh3Ha0uQnvKuA" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-youtube" viewBox="0 0 20 20">
+                        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"/>
+                      </svg></li>
+                      <li class="ms-3"><a class="text-body-secondary" href="https://github.com/keiane" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="black" class="bi bi-github" viewBox="0 0 20 20">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                      </svg></a></li>
+                    </ul>
+                </div> 
+              </div> 
+            </div>
+      </div>
+
+      <!------------------------------- About Me ------------------------------->
+      <div class="container-fluid brown-bg">
+        <div class="container marketing">
+          <div class="row featurette px-7 py-5 align-items-center" id="about">
+            <div class="col-md-7">
+              <h2 class="featurette-heading fw-normal lh-1">About Me</h2>
+              <hr class="dotted">
+              <p class="lead">I'm an engineer interested in microcontrollers, FPGAs, and embedded programming.</p>
+              <p class="lead">Currently, I'm a graduate student at Rowan University studying electrical and computer engineering and am expected to graduate in May 2026. I'm also an associate engineer at Atlantic City Electric where I contribute to the maintenance and testing of electric meters for the South Jersey region. I am also learning on my own time to improve my knowledge and skills with RTOS, x86 and ARM architectures, VHDL, and network/communication protocols.</p>
+              <p class="lead"> Previously, I've worked on various projects across many settings including Gradio AI interfaces, web portfolios, magnetic LED arrays, and Verilog processors. Some languages that I'm proficient in include C/C++, Java, Python, and JavaScript. On the frontend for this website, I used HTML, CSS, and JavaScript with the backend handled in Flask.</p>
+              <p class="lead">When I'm not on my computer or at work, you can find me at the gym, spending time with my family, playing with my dog and cat, or playing video games.</p>
+
+              <a href="{{ url_for('contact') }}" class="lead resume-link">
+                <strong>
+                  Contact Me!
+                    <span class="arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                      </svg>
+                    </span>
+                  </strong>
+                </a>
+            </div>
+            <div class="col-md-5"> 
+              <img src="/static/selfportrait.jpg" class="selfportrait img-fluid mx-auto">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!------------------------------- Work Experience ------------------------------->
+<div class="container-fluid white-bg">
+  <div class="container marketing">
+    <h2 class="pb-2 py-5" id="experience">Work Experience</h2>
+    <hr class="dotted">
+    <div class="row g-4 py-5">
+      
+      <a href="https://www.atlanticcityelectric.com/" class="zoom" target="_blank">
+        <div class="row py-5">
+          <div class="col-md-3">
+            <h6 style="color: #bbbbbb;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+              </svg>
+              June 2025 - Present
+            </h6>            
+          </div>
+          <div class="col-md-9">
+            <div class="feature-icon d-flex w-100 align-items-center justify-content-center fs-2 mb-3"> 
+              <img src="/static/ace-logo.svg" height="125">
+            </div>
+            
+            <h3 class="fs-2 text-body-emphasis">Atlantic City Electric
+              <span class="arrow zoom">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                  </svg>
+              </span>
+            </h3> 
+            <h6 style="color: #bbbbbb;">
+              Associate Electrical Engineer
+            </h6>            
+            <p class="lead">Contributed to the troubleshooting, testing, and support of smart metering systems and AMI technologies. I assisted engineers in analyzing meter data, troubleshooting field issues, and optimizing network performance to improve grid reliability and customer service. Responsibilities included preparing technical documentation, updating system configurations, and supporting cross-functional teams on metering integration projects including technicians and data analysts. </p> 
+            <span class="badge">GIS Viewer</span>
+            <span class="badge">AMI Systems</span>
+            <span class="badge">Meter Management</span>
+            <span class="badge">Field Testing</span>
+            <span class="badge">Data Integrity</span>
+            <span class="badge">Remediation</span>
+            <span class="badge">Signal Analysis</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://www.exeloncorp.com/" class="zoom" target="_blank">
+        <div class="row py-5">
+          <div class="col-md-3">
+            <h6 style="color: #bbbbbb;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+              </svg>
+              May 2024 - December 2024
+            </h6>            
+          </div>
+          <div class="col-md-9">
+            <div class="feature-icon d-flex w-100 align-items-center justify-content-center fs-2 mb-3"> 
+              <img src="/static/phi-logo.svg" height="125">
+            </div>
+            
+            <h3 class="fs-2 text-body-emphasis">Pepco Holdings Inc.
+              <span class="zoom arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                  </svg>
+              </span>
+            </h3> 
+            <h6 style="color: #bbbbbb;">
+              Project Management Co-op
+            </h6>            
+            <p class="lead">Collaborated with project managers to support various project lifecycles including documentation, scheduling, forecasting, and closeouts. I streamlined project operations by leading the migration of documentation processes from SharePoint to Oracle's Unifier Project Portfolio Management system for improved standardized project tracking and document control.</p> 
+            <span class="badge">Smart Grid</span>
+            <span class="badge">Project Management</span>
+            <span class="badge">Battery Energy Storage Systems</span>
+            <span class="badge">Microgrids</span>
+            <span class="badge">Vehicle-to-Grid (V2G)</span>
+            <span class="badge">Grid Reliability</span>
+            <span class="badge">Peak Shaving</span>
+            <span class="badge">Oracle UPPM</span>
+        </div>
+        
+        </div>
+      </a>
+
+      <a href="https://www.navsea.navy.mil/Home/Warfare-Centers/NSWC-Philadelphia/" class="zoom" target="_blank">
+        <div class="row py-5">
+          <div class="col-md-3">
+            <h6 style="color: #bbbbbb;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+              </svg>
+              May 2023 - August 2023
+            </h6>            
+          </div>
+          <div class="col-md-9">
+            <div class="feature-icon d-flex w-100 align-items-center justify-content-center fs-2 mb-3"> 
+              <img src="/static/nswcpd-logo.svg" height="125">
+            </div>
+            
+            <h3 class="fs-2 text-body-emphasis">Naval Surface Warfare Center of Philadelphia
+              <span class="zoom arrow">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                  </svg>
+              </span>
+            </h3> 
+            <h6 style="color: #bbbbbb;">
+              Software Service Agent Intern
+            </h6>            
+            <p class="lead">Provided support in debugging, testing, and documenting embedded code for control and monitoring systems on littoral combat ships for improved reliability and compliance with military standards. Also articipated in code reviews, system integration, and version control workflows using Jira and GitLab.</p> 
+            <span class="badge">Java</span>
+            <span class="badge">Programmable Logic Controllers</span>
+            <span class="badge">Littoral Combat Ship</span>
+            <span class="badge">JSON</span>  
+            <span class="badge">JavaScript</span>  
+            <span class="badge">Jira</span>  
+            <span class="badge">GitLab</span>  
+        </div>
+        
+        </div>
+      </a>
+
     </div>
+  </div>
 </div>
 
+      <!------------------------------- Projects ------------------------------->
+      <div class="container-fluid white-bg">
+        <div class="container marketing">
+          <h2 class="pb-2 py-5" id="projects">Projects</h2>
+          <hr class="dotted">
+          <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
 
+            <a href="https://huggingface.co/spaces/keiane/Fractional-Visualization" target="_blank" class="zoom">
+              <div class="feature col"> 
+                <h3 class="fs-2 text-body-emphasis">Gradio Fractional Calculus
+                  <span class="arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                      </svg>
+                  </span>
+                </h3> 
+                <h6 style="color: rgb(187, 187, 187);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                  </svg>
+                  September 2023 - May 2024
+                </h6>            
+                <p class="lead">Utilized PyTorch framework with Gradio library to implement a basic UI giving users a variety of AI model customizations. This includes a dropdown of various torchvision models, adding adversarial attacks, and adjusting the batch sizes of the datasets used just to name a few adjustable parameters. Additionally, I designed a custom PyPi component by configuring the Svelte components from Gradio. </p> 
+              </div> 
+            </a>
+
+              <a href="https://github.com/keiane/ChessBoard" target="_blank" class="zoom">
+
+              <div class="feature col">                 
+                <h3 class="fs-2 text-body-emphasis">LED Chess Board
+                  <span class="arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                      </svg>
+                  </span>
+                </h3> 
+                <h6 style="color: rgb(187, 187, 187);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                  </svg>
+                  January 2023 - May 2023
+                </h6>            
+                <p class="lead">Designed a PCB in Altium Designer to mimic the playing of a chess game and the specific moves each piece can make using LEDs, shift registers, and linear voltage regulators. This project was used with the MSP430 MCU along with a ESP01 for wireless connectivity.  </p> 
+              </div> 
+            </a> 
+
+          <a href="https://www.exeloncorp.com/" class="zoom">
+
+              <div class="feature col">                 
+                <h3 class="fs-2 text-body-emphasis">RISC-V Verilog CPU
+                  <span class="arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                      </svg>
+                  </span>
+                </h3> 
+                <h6 style="color: rgb(187, 187, 187);">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+                  </svg>
+                  September 2022 - December 2022
+                </h6>            
+                <p class="lead">Designed a RISC-V 32-bit computer processor using Quartus software with Verilog HDL. This project consisted of various files for the regfile, ALU, RAM, program counter, and control unit to each be testbenched indivdually, and then testbenched at the whole to do basic arithmetic such as addition.  </p> 
+              </div> 
+            </a> 
+              <a href="{{ url_for('resume') }}" target="_blank" class="lead resume-link">
+                <strong>
+                  View My Full Résumé
+                    <span class="arrow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-arrow-up-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                              d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z"/>
+                      </svg>
+                    </span>
+                  </strong>
+                </a>
+        </div>
+        </div>
+      </div>
+
+  </body>
+</main>
 {% endblock %}

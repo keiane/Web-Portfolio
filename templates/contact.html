@@ -1,27 +1,68 @@
 {% extends 'base.html' %}
 {% from 'bootstrap5/form.html' import render_form %}
 {% block title %}Contact{% endblock %}
-{% block content %}
-<div class="px-4 py-5 my-5 text-center">
-    {% if msg_sent: %}
-    <h1 class="display-5 fw-bold text-body-emphasis">Success!</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Your message has been sent.</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      </div>
-    </div>
-    {% else: %}
-    <h1 class="display-5 fw-bold text-body-emphasis">Contact Me!</h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">Want to get in contact with me? Fill out the form below and I will try to get back to you as soon as possible!</p>
-      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-      </div>
-    </div>
-    {% endif %}
-  </div>
+{% block contact %}
 
-<div class="container">
-	<!-- This is where our form will go. -->
-	{{ render_form(form, button_style="light") }}
-	</div>
+<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_site_key }}"></script>
+<script>
+  grecaptcha.ready(function() {
+    grecaptcha.execute('{{ recaptcha_site_key }}', {action: 'submit'}).then(function(token) {
+      const recaptchaResponse = document.getElementById('g-recaptcha-response');
+      recaptchaResponse.value = token;
+    });
+  });
+</script>
+
+
+<!-- Full viewport-height flex container -->
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <!-- Inner container for width control -->
+  <div class="container" style="max-width: 1000px;">
+    
+    <!-- Back link -->
+    <a href="{{ url_for('home') }}" class="lead back-link mb-4 d-block" style="margin-top: 2rem;">
+      <strong>
+        <span class="arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+        </span>
+        Keiane Balicanta
+      </strong>
+    </a>
+
+    <!-- Form -->
+    <form class="fs-form" method="POST" target="_top" style="margin-bottom: 2rem;">
+      <div class="fs-field">
+        <label class="fs-label" for="name">Your Name</label>
+        <input class="fs-input" id="name" name="name" required />
+      </div>
+
+      <div class="fs-field">
+        <label class="fs-label" for="email">Email</label>
+        <input class="fs-input" type="email" id="email" name="email" required />
+        <p class="fs-description">
+          This will help me respond to your query via an email.
+        </p>
+      </div>
+
+      <div class="fs-field">
+        <label class="fs-label" for="number">Phone Number</label>
+        <input class="fs-input" id="number" pattern="^\(\d{3}\)-\d{3}-\d{4}$" name="number" placeholder="(XXX) XXX-XXXX" required />
+      </div>
+
+      <div class="fs-field">
+        <label class="fs-label" for="message">Message</label>
+        <textarea class="fs-textarea" required id="message" name="message" placeholder="What would you like to discuss?" style="min-height: 100px; resize: none;"></textarea>
+        <p class="fs-description">I typically respond within 1-2 days.</p>
+      </div>
+
+      <div class="fs-button-group">
+        <button class="fs-button" type="submit">Submit</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
 {% endblock %}

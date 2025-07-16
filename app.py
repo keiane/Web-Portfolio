@@ -19,6 +19,9 @@ app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
+RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY")
+RECAPTCHA_SITE_KEY = os.environ.get("RECAPTCHA_SITE_KEY")
+
 mail = Mail(app)
 
 Bootstrap5(app)
@@ -39,16 +42,25 @@ def about():
 def experience():
     return render_template('experience.html', current_year=current_year)
 
+@app.route("/success")
+def contact_success():
+    return render_template("contact_success.html", current_year=current_year)
+
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
-    form = Contact()
     if request.method == "POST":
         data = request.form
         msg = Message(subject=f"Portfolio message from {data['name']}", 
-                      body=f"Name: {data['name']}\nEmail: {data['email']}\nPhone: {data['phone']}\n\n{data['message']}", sender=os.environ.get('MAIL_USERNAME'), recipients=[os.environ.get('MAIL_RECIPIENT')])
-        mail.send(msg)
-        return render_template("contact.html", form=form, msg_sent=True, current_year=current_year)
-    return render_template("contact.html", form=form, msg_sent=False, current_year=current_year)
+                      body=f"Name: {data['name']}\nEmail: {data['email']}\nPhone: {data['number']}\n\n{data['message']}", sender=os.environ.get('MAIL_USERNAME'), recipients=[os.environ.get('MAIL_RECIPIENT')])
+
+
+        try:
+            mail.send(msg)
+            return redirect(url_for("contact_success"))
+        except Exception as e:
+            print(f"Failed to send email: {e}")
+            return render_template("contact.html", current_year=current_year)
+    return render_template("contact.html", current_year=current_year)
 
 @app.route('/projects')
 def projects():

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Message Sent{% endblock %}
+{% block contact %}
+<div class="container text-center mt-5">
+  <h2>Thank you for reaching out!</h2>
+  <p>I will get back to you shortly.</p>
+      <a href="{{ url_for('home') }}" class="lead back-link mb-4 d-block" style="margin-top: 2rem;">
+      <strong>
+        <span class="arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+          </svg>
+        </span>
+        Keiane Balicanta
+      </strong>
+    </a>
+</div>
+{% endblock %}
