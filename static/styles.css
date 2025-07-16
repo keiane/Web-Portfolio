@@ -3,12 +3,12 @@ your web pages for the styles to be rendered. */
 
 body {
 /* background-color: #07015a; */
-background: linear-gradient(0deg, #d7e974 -60%, #419197 30%, #12486B 100%);
+background: linear-gradient(0deg, #70384A -90%, #271a29 20%, #1d2b3d 100%);
 color: #ffffff;
 }
 
 a:link {
-  color: #F4CE14;
+  color: #d11c53;
 }
 
 .jumbotron {
