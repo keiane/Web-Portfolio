@@ -32,7 +32,7 @@ This document tracks bug fixes and updates made to my personal engineering portf
 ### Changed
 - Switched from a static horizontal navbar to a responsive mobile-friendly navbar with toggler support.
 - Switched from blue and yellow theme to warm/neutral color pallete.
-- Switched hosting provider from deployment on Render to deployment on Porkbun for domain and hosting management. Also due to unsolvable account and payment issues on Render's side. 
+- Switched hosting provider from deployment on Cloudflare to deployment on Porkbun for domain and hosting management. Also due to unsolvable account and payment issues on Cloudflare's side. 
 - Updated and more recent portrait
 - Updated biography
 
