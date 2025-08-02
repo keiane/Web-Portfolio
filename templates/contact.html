@@ -33,13 +33,14 @@
 
     <!-- Form -->
     <form class="fs-form" method="POST" target="_top" style="margin-bottom: 2rem;">
+
       <div class="fs-field">
-        <label class="fs-label" for="name">Your Name</label>
+        <label class="fs-label" for="name">Your Name <label style="color: #ff7b00;">*</label></label>
         <input class="fs-input" id="name" name="name" required />
       </div>
 
       <div class="fs-field">
-        <label class="fs-label" for="email">Email</label>
+        <label class="fs-label" for="email">Email <label style="color: #ff7b00;">*</label></label>
         <input class="fs-input" type="email" id="email" name="email" required />
         <p class="fs-description">
           This will help me respond to your query via an email.
@@ -47,14 +48,20 @@
       </div>
 
       <div class="fs-field">
-        <label class="fs-label" for="number">Phone Number</label>
+        <label class="fs-label" for="number">Phone Number <label style="color: #ff7b00;">*</label></label>
         <input class="fs-input" id="number" pattern="^\(\d{3}\)-\d{3}-\d{4}$" name="number" placeholder="(XXX) XXX-XXXX" required />
       </div>
 
       <div class="fs-field">
-        <label class="fs-label" for="message">Message</label>
+        <label class="fs-label" for="message">Message <label style="color: #ff7b00;">*</label></label>
         <textarea class="fs-textarea" required id="message" name="message" placeholder="What would you like to discuss?" style="min-height: 100px; resize: none;"></textarea>
         <p class="fs-description">I typically respond within 1-2 days.</p>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <!----- HCAPTCHA ----->
+        <div class="h-captcha" data-sitekey="f2981a50-d6c2-48ea-a46c-cbc891defe6c"></div>
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
       </div>
 
       <div class="fs-button-group">

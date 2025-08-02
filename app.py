@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, send_file
 from flask_bootstrap import Bootstrap5
 from flask_mail import Mail, Message
 from forms import Contact
-import smtplib
+import smtplib, http
 from datetime import datetime
 import os
 
@@ -21,6 +21,8 @@ app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY")
 RECAPTCHA_SITE_KEY = os.environ.get("RECAPTCHA_SITE_KEY")
+
+HCAPTCHA_SECRET_KEY = os.environ.get("HCAPTCHA_SECRET_KEY")
 
 mail = Mail(app)
 
@@ -53,6 +55,12 @@ def contact():
         msg = Message(subject=f"Portfolio message from {data['name']}", 
                       body=f"Name: {data['name']}\nEmail: {data['email']}\nPhone: {data['number']}\n\n{data['message']}", sender=os.environ.get('MAIL_USERNAME'), recipients=[os.environ.get('MAIL_RECIPIENT')])
 
+        token = request.POST["h-captcha-response"]
+        params = {
+            "secret": HCAPTCHA_SECRET_KEY,
+            "response": token
+        }
+        json = http.POST("https://hcaptcha.com/siteverify", params)
 
         try:
             mail.send(msg)
