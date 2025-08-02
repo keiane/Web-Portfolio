@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for, request, send_file
 from flask_bootstrap import Bootstrap5
 from flask_mail import Mail, Message
 from forms import Contact
-import smtplib, http
+import smtplib, http, requests
 from datetime import datetime
 import os
 
@@ -18,9 +18,6 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-
-RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY")
-RECAPTCHA_SITE_KEY = os.environ.get("RECAPTCHA_SITE_KEY")
 
 HCAPTCHA_SECRET_KEY = os.environ.get("HCAPTCHA_SECRET_KEY")
 
@@ -52,23 +49,40 @@ def contact_success():
 def contact():
     if request.method == "POST":
         data = request.form
-        msg = Message(subject=f"Portfolio message from {data['name']}", 
-                      body=f"Name: {data['name']}\nEmail: {data['email']}\nPhone: {data['number']}\n\n{data['message']}", sender=os.environ.get('MAIL_USERNAME'), recipients=[os.environ.get('MAIL_RECIPIENT')])
 
-        token = request.POST["h-captcha-response"]
+        token = data.get("h-captcha-response")
+        if not token:
+            return render_template("contact.html", current_year=current_year, error="hCaptcha not completed.")
+
+        # Verify hCaptcha
         params = {
             "secret": HCAPTCHA_SECRET_KEY,
             "response": token
         }
-        json = http.POST("https://hcaptcha.com/siteverify", params)
 
         try:
+            response = requests.post("https://hcaptcha.com/siteverify", data=params)
+            result = response.json()
+
+            if not result.get("success"):
+                return render_template("contact.html", current_year=current_year, error="hCaptcha verification failed.")
+
+            msg = Message(
+                subject=f"Portfolio message from {data['name']}", 
+                body=f"Name: {data['name']}\nEmail: {data['email']}\nPhone: {data['number']}\n\n{data['message']}",
+                sender=os.environ.get('MAIL_USERNAME'),
+                recipients=[os.environ.get('MAIL_RECIPIENT')]
+            )
+
             mail.send(msg)
             return redirect(url_for("contact_success"))
+
         except Exception as e:
             print(f"Failed to send email: {e}")
-            return render_template("contact.html", current_year=current_year)
+            return render_template("contact.html", current_year=current_year, error="An error occurred.")
+    
     return render_template("contact.html", current_year=current_year)
+
 
 @app.route('/projects')
 def projects():

@@ -3,17 +3,6 @@
 {% block title %}Contact{% endblock %}
 {% block contact %}
 
-<script src="https://www.google.com/recaptcha/api.js?render={{ recaptcha_site_key }}"></script>
-<script>
-  grecaptcha.ready(function() {
-    grecaptcha.execute('{{ recaptcha_site_key }}', {action: 'submit'}).then(function(token) {
-      const recaptchaResponse = document.getElementById('g-recaptcha-response');
-      recaptchaResponse.value = token;
-    });
-  });
-</script>
-
-
 <!-- Full viewport-height flex container -->
 <div class="d-flex justify-content-center align-items-center min-vh-100">
   <!-- Inner container for width control -->
