@@ -585,3 +585,15 @@ header {
 section, div, img {
     max-width: 100%;
 }
+
+.pdf-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.pdf-container iframe {
+    width: 100%;
+    height: 100vh;
+    border: none;
+}
