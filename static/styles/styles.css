@@ -560,3 +560,28 @@ header {
   }
 }
 
+/* === Anti-horizontal-scroll & margin fix === */
+
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix cursor-light overflow */
+.cursor-light {
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+/* Prevent navbar pseudo-elements from expanding layout */
+.navbar,
+header {
+    overflow-x: hidden;
+}
+
+/* Ensure sections never exceed screen width */
+section, div, img {
+    max-width: 100%;
+}
